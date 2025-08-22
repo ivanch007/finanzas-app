@@ -3,7 +3,9 @@ package com.ivanch07.finanzas.service;
 import com.ivanch07.finanzas.dto.RegisterRequestDto;
 import com.ivanch07.finanzas.model.User;
 import com.ivanch07.finanzas.repositoy.UserRepository;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.*;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -46,5 +48,13 @@ public class UserService implements UserDetailsService {
         user.setEmail(req.getEmail());
         user.setPassword(passwordEncoder.encode(req.getPassword()));
         return userRepository.save(user);
+    }
+
+    public User getCurrentUser(){
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String email = authentication.getName();
+
+        return userRepository.findByEmail(email)
+                .orElseThrow(()-> new UsernameNotFoundException("Usuario no encontrado " + email));
     }
 }
