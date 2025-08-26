@@ -1,5 +1,7 @@
 package com.ivanch07.finanzas.controller;
 
+import com.ivanch07.finanzas.dto.TransactionRequestDto;
+import com.ivanch07.finanzas.dto.TransactionResponseDto;
 import com.ivanch07.finanzas.model.Transaction;
 import com.ivanch07.finanzas.service.TransactionService;
 import org.springframework.http.ResponseEntity;
@@ -19,22 +21,24 @@ public class TransactionController {
     }
 
     @GetMapping
-    public ResponseEntity<List<Transaction>> getMyTransaction(){
+    public ResponseEntity<List<TransactionResponseDto>> getMyTransaction(){
         return ResponseEntity.ok(transactionService.getTransactions());
     }
 
     @PostMapping
-    public ResponseEntity<Transaction> createTransaction(@RequestBody Transaction transaction){
-        return ResponseEntity.ok(transactionService.createTransaction(transaction));
+    public ResponseEntity<TransactionResponseDto> createTransaction(
+            @RequestBody TransactionRequestDto transactionRequestDto){
+        return ResponseEntity.ok(transactionService.createTransaction(
+                transactionRequestDto));
     }
 
-    @PutMapping
-    public ResponseEntity<Transaction> updateTransaction(@PathVariable Long id,
-                                                         @RequestBody Transaction transaction){
-        return ResponseEntity.ok(transactionService.updateTransaction(id, transaction));
+    @PutMapping("/{id}")
+    public ResponseEntity<TransactionResponseDto> updateTransaction(@PathVariable Long id,
+                                                         @RequestBody TransactionRequestDto transactionRequestDto){
+        return ResponseEntity.ok(transactionService.updateTransaction(id, transactionRequestDto));
     }
 
-    @DeleteMapping
+    @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteTransaction(@PathVariable Long id){
         transactionService.deleteTransaction(id);
         return ResponseEntity.noContent().build();

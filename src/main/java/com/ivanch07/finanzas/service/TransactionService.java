@@ -1,11 +1,16 @@
 package com.ivanch07.finanzas.service;
 
+
+import com.ivanch07.finanzas.dto.TransactionRequestDto;
+import com.ivanch07.finanzas.dto.TransactionResponseDto;
+import com.ivanch07.finanzas.mappers.TransactionMapper;
 import com.ivanch07.finanzas.model.Transaction;
 import com.ivanch07.finanzas.model.User;
 import com.ivanch07.finanzas.repositoy.TransactionRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class TransactionService {
@@ -14,27 +19,34 @@ public class TransactionService {
     private final UserService userService;
 
 
-    public TransactionService(TransactionRepository transactionRepository, UserService userService) {
+    public TransactionService(TransactionRepository transactionRepository,
+                              UserService userService) {
         this.transactionRepository = transactionRepository;
         this.userService = userService;
     }
 
-    public List<Transaction> getTransactions(){
-
+    public List<TransactionResponseDto> getTransactions() {
         User currentUser = userService.getCurrentUser();
-        return transactionRepository.findByUser(currentUser);
+        return transactionRepository.findByUser(currentUser)
+                .stream()
+                .map(TransactionMapper :: toTransactionDto)
+                .collect(Collectors.toList());
     }
 
-    public Transaction createTransaction(Transaction transaction){
+    public TransactionResponseDto createTransaction(
+            TransactionRequestDto transactionRequestDto){
 
         User currentUser = userService.getCurrentUser();
-        transaction.setUser(currentUser);
 
-        return transactionRepository.save(transaction);
+        Transaction transaction = TransactionMapper.toEntity(
+                transactionRequestDto, currentUser);
 
+        Transaction savedTransaction = transactionRepository.save(transaction);
+
+       return TransactionMapper.toTransactionDto(savedTransaction);
     }
 
-    public Transaction updateTransaction(Long id,Transaction updatedTransaction){
+    public TransactionResponseDto updateTransaction(Long id,TransactionRequestDto transactionRequestDto){
 
         User currentUser = userService.getCurrentUser();
 
@@ -45,10 +57,14 @@ public class TransactionService {
             throw new RuntimeException("No puede actualizar una transacción que no es tuya");
         }
 
-        transaction.setDescription(updatedTransaction.getDescription());
-        transaction.setAmount(updatedTransaction.getAmount());
+        transaction.setDescription(transactionRequestDto.getDescription());
+        transaction.setAmount(transactionRequestDto.getAmount());
+        transaction.setDate(transactionRequestDto.getDate());
+        transaction.setCategory(transactionRequestDto.getCategory());
 
-        return transactionRepository.save(transaction);
+        Transaction transactionUpdated = transactionRepository.save(transaction);
+
+        return TransactionMapper.toTransactionDto(transactionUpdated);
     }
 
     public void deleteTransaction(Long id) {
@@ -61,6 +77,6 @@ public class TransactionService {
             throw new RuntimeException("No puede transacción una transacción que no es tuya");
 
         }
-        transactionRepository.save(transaction);
+        transactionRepository.delete(transaction);
     }
 }
