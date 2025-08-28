@@ -10,8 +10,7 @@ import java.time.LocalDate;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class GoalResponseDto {
-    private Long id;
+public class GoalRequestDto {
     private String name;
     private BigDecimal targetAmount;
     private BigDecimal currentAmount;
