@@ -17,5 +17,5 @@ public class TransactionRequestDto {
     private BigDecimal amount;
     private String description;
     private LocalDate date;
-    private Category category;
+    private Long categoryId;
 }

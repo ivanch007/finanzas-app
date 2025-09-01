@@ -9,12 +9,14 @@ public class TransactionMapper {
 
     public static TransactionResponseDto toTransactionDto(Transaction transaction){
 
+        if (transaction == null) return null;
+
         return new TransactionResponseDto(
                 transaction.getId(),
                 transaction.getAmount(),
                 transaction.getDescription(),
                 transaction.getDate(),
-                transaction.getCategory()
+                CategoryMapper.toCategoryDto(transaction.getCategory())
         );
     }
 
@@ -24,7 +26,6 @@ public class TransactionMapper {
         transaction.setAmount(transactionRequestDto.getAmount());
         transaction.setDescription(transactionRequestDto.getDescription());
         transaction.setDate(transactionRequestDto.getDate());
-        transaction.setCategory(transactionRequestDto.getCategory());
         transaction.setUser(user);
 
         return transaction;

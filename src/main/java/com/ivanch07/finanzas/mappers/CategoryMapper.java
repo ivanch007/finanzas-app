@@ -7,10 +7,12 @@ import com.ivanch07.finanzas.model.Category;
 public class CategoryMapper {
 
     public static CategoryResponseDto toCategoryDto(Category category){
+        if (category == null) return null;
         return new CategoryResponseDto(
                 category.getId(),
                 category.getName(),
-                category.getDescription()
+                category.getDescription(),
+                UserMapper.toDto(category.getUser())
         );
     }
 

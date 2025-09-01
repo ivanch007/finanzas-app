@@ -6,6 +6,7 @@ import com.ivanch07.finanzas.dto.TransactionResponseDto;
 import com.ivanch07.finanzas.mappers.TransactionMapper;
 import com.ivanch07.finanzas.model.Transaction;
 import com.ivanch07.finanzas.model.User;
+import com.ivanch07.finanzas.repositoy.CategoryRepository;
 import com.ivanch07.finanzas.repositoy.TransactionRepository;
 import org.springframework.stereotype.Service;
 
@@ -17,12 +18,15 @@ public class TransactionService {
 
     private final TransactionRepository transactionRepository;
     private final UserService userService;
+    private final CategoryRepository categoryRepository;
+
 
 
     public TransactionService(TransactionRepository transactionRepository,
-                              UserService userService) {
+                              UserService userService, CategoryRepository categoryRepository) {
         this.transactionRepository = transactionRepository;
         this.userService = userService;
+        this.categoryRepository = categoryRepository;
     }
 
     public List<TransactionResponseDto> getTransactions() {
@@ -40,6 +44,12 @@ public class TransactionService {
 
         Transaction transaction = TransactionMapper.toEntity(
                 transactionRequestDto, currentUser);
+
+        transaction.setCategory(
+                categoryRepository.findById(transactionRequestDto.getCategoryId())
+                        .orElseThrow(() -> new RuntimeException("Categoría no encontrada"))
+        );
+
 
         Transaction savedTransaction = transactionRepository.save(transaction);
 
@@ -60,7 +70,13 @@ public class TransactionService {
         transaction.setDescription(transactionRequestDto.getDescription());
         transaction.setAmount(transactionRequestDto.getAmount());
         transaction.setDate(transactionRequestDto.getDate());
-        transaction.setCategory(transactionRequestDto.getCategory());
+
+        if (transactionRequestDto.getCategoryId() != null) {
+            transaction.setCategory(
+                    categoryRepository.findById(transactionRequestDto.getCategoryId())
+                            .orElseThrow(() -> new RuntimeException("Categoría no encontrada"))
+            );
+        }
 
         Transaction transactionUpdated = transactionRepository.save(transaction);
 
