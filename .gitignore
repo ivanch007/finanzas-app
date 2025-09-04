@@ -36,5 +36,5 @@ build/
 .env.local
 .env.*.local
 
-docker-compose.yml
+docker-compose.yaml
 docker-compose.override.yml
