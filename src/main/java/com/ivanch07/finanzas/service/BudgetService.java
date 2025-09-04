@@ -1,7 +1,7 @@
 package com.ivanch07.finanzas.service;
 
-import com.ivanch07.finanzas.dto.BudgetRequestDto;
-import com.ivanch07.finanzas.dto.BudgetResponseDto;
+import com.ivanch07.finanzas.dto.budgetDto.BudgetRequestDto;
+import com.ivanch07.finanzas.dto.budgetDto.BudgetResponseDto;
 import com.ivanch07.finanzas.mappers.BudgetMapper;
 import com.ivanch07.finanzas.model.Budget;
 import com.ivanch07.finanzas.model.User;

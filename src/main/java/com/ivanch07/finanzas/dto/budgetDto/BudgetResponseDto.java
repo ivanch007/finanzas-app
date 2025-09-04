@@ -1,4 +1,4 @@
-package com.ivanch07.finanzas.dto;
+package com.ivanch07.finanzas.dto.budgetDto;
 
 import com.ivanch07.finanzas.util.enumeration.BudgetPeriod;
 import lombok.AllArgsConstructor;

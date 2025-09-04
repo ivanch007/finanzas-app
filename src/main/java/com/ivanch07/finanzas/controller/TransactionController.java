@@ -1,8 +1,7 @@
 package com.ivanch07.finanzas.controller;
 
-import com.ivanch07.finanzas.dto.TransactionRequestDto;
-import com.ivanch07.finanzas.dto.TransactionResponseDto;
-import com.ivanch07.finanzas.model.Transaction;
+import com.ivanch07.finanzas.dto.transactionDto.TransactionRequestDto;
+import com.ivanch07.finanzas.dto.transactionDto.TransactionResponseDto;
 import com.ivanch07.finanzas.service.TransactionService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

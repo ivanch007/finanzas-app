@@ -1,7 +1,7 @@
 package com.ivanch07.finanzas.mappers;
 
-import com.ivanch07.finanzas.dto.CategoryRequestDto;
-import com.ivanch07.finanzas.dto.CategoryResponseDto;
+import com.ivanch07.finanzas.dto.categoryDto.CategoryRequestDto;
+import com.ivanch07.finanzas.dto.categoryDto.CategoryResponseDto;
 import com.ivanch07.finanzas.model.Category;
 
 public class CategoryMapper {

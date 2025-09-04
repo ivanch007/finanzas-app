@@ -1,6 +1,6 @@
 package com.ivanch07.finanzas.mappers;
 
-import com.ivanch07.finanzas.dto.UserResponseDto;
+import com.ivanch07.finanzas.dto.userDto.UserResponseDto;
 import com.ivanch07.finanzas.model.User;
 
 public class UserMapper {

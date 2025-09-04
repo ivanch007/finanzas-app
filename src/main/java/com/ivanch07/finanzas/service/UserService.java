@@ -1,6 +1,6 @@
 package com.ivanch07.finanzas.service;
 
-import com.ivanch07.finanzas.dto.RegisterRequestDto;
+import com.ivanch07.finanzas.dto.registerDto.RegisterRequestDto;
 import com.ivanch07.finanzas.model.User;
 import com.ivanch07.finanzas.repositoy.UserRepository;
 import org.springframework.security.core.Authentication;

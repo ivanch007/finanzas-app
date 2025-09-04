@@ -1,8 +1,8 @@
 package com.ivanch07.finanzas.controller;
 
-import com.ivanch07.finanzas.dto.AuthenticationRequestDto;
-import com.ivanch07.finanzas.dto.AuthenticationResponseDto;
-import com.ivanch07.finanzas.dto.RegisterRequestDto;
+import com.ivanch07.finanzas.dto.authDto.AuthenticationRequestDto;
+import com.ivanch07.finanzas.dto.authDto.AuthenticationResponseDto;
+import com.ivanch07.finanzas.dto.registerDto.RegisterRequestDto;
 import com.ivanch07.finanzas.model.User;
 import com.ivanch07.finanzas.security.JwtUtil;
 import com.ivanch07.finanzas.service.UserService;

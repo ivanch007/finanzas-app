@@ -1,7 +1,7 @@
 package com.ivanch07.finanzas.mappers;
 
-import com.ivanch07.finanzas.dto.GoalRequestDto;
-import com.ivanch07.finanzas.dto.GoalResponseDto;
+import com.ivanch07.finanzas.dto.goalDto.GoalRequestDto;
+import com.ivanch07.finanzas.dto.goalDto.GoalResponseDto;
 import com.ivanch07.finanzas.model.Goal;
 
 public class GoalMapper {

@@ -1,7 +1,7 @@
 package com.ivanch07.finanzas.service;
 
-import com.ivanch07.finanzas.dto.CategoryRequestDto;
-import com.ivanch07.finanzas.dto.CategoryResponseDto;
+import com.ivanch07.finanzas.dto.categoryDto.CategoryRequestDto;
+import com.ivanch07.finanzas.dto.categoryDto.CategoryResponseDto;
 import com.ivanch07.finanzas.mappers.CategoryMapper;
 import com.ivanch07.finanzas.model.Category;
 import com.ivanch07.finanzas.model.User;

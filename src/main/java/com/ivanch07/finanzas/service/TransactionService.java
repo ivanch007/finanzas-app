@@ -1,8 +1,8 @@
 package com.ivanch07.finanzas.service;
 
 
-import com.ivanch07.finanzas.dto.TransactionRequestDto;
-import com.ivanch07.finanzas.dto.TransactionResponseDto;
+import com.ivanch07.finanzas.dto.transactionDto.TransactionRequestDto;
+import com.ivanch07.finanzas.dto.transactionDto.TransactionResponseDto;
 import com.ivanch07.finanzas.mappers.TransactionMapper;
 import com.ivanch07.finanzas.model.Transaction;
 import com.ivanch07.finanzas.model.User;

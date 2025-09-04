@@ -1,4 +1,4 @@
-package com.ivanch07.finanzas.dto;
+package com.ivanch07.finanzas.dto.goalDto;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

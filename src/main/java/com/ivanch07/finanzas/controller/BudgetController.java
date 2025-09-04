@@ -1,7 +1,7 @@
 package com.ivanch07.finanzas.controller;
 
-import com.ivanch07.finanzas.dto.BudgetRequestDto;
-import com.ivanch07.finanzas.dto.BudgetResponseDto;
+import com.ivanch07.finanzas.dto.budgetDto.BudgetRequestDto;
+import com.ivanch07.finanzas.dto.budgetDto.BudgetResponseDto;
 import com.ivanch07.finanzas.service.BudgetService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

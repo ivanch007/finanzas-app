@@ -1,7 +1,7 @@
 package com.ivanch07.finanzas.controller;
 
-import com.ivanch07.finanzas.dto.GoalRequestDto;
-import com.ivanch07.finanzas.dto.GoalResponseDto;
+import com.ivanch07.finanzas.dto.goalDto.GoalRequestDto;
+import com.ivanch07.finanzas.dto.goalDto.GoalResponseDto;
 import com.ivanch07.finanzas.service.GoalService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
